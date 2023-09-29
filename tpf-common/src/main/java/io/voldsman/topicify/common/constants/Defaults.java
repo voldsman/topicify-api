@@ -21,4 +21,6 @@ public class Defaults {
     public static final int ACCESS_TOKEN_EXP = 30 * 60; // 30min
     public static final String REFRESH_TOKEN_HEADER = "x-refresh";
     public static final String DEVICE_FINGERPRINT_HEADER = "x-device-fp";
+    public static final String AUTHORIZATION_HEADER = "authorization";
+    public static final String REQUEST_ATTR_USERID_PARAM = "userId";
 }
