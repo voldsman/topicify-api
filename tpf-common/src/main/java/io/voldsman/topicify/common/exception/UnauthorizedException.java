@@ -1,7 +1,7 @@
 package io.voldsman.topicify.common.exception;
 
-public class NotFoundException extends RuntimeException {
-    public NotFoundException(String message) {
+public class UnauthorizedException extends RuntimeException {
+    public UnauthorizedException(String message) {
         super(message);
     }
 }

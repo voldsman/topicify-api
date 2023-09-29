@@ -1,0 +1,14 @@
+server:
+  port: ${PORT:9000}
+
+spring:
+  profiles:
+    active: ${PROFILE:dev}
+  main:
+    banner-mode: off
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false

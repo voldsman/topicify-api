@@ -1,0 +1,28 @@
+name: "topicify-api"
+version: "3.8"
+services:
+  mongo-db:
+    container_name: mongo-db
+    image: mongo:6.0.10
+    command: [ "--replSet", "rs0", "--bind_ip_all" ]
+    ports:
+      - "27017:27017"
+    environment:
+      - TZ=UTC
+    volumes:
+      - /opt/volumes/mongo-data-1:/data/db
+    restart: unless-stopped
+    networks:
+      - topicify-network
+
+  redis-db:
+    image: redis:latest
+    container_name: redis-db
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    networks:
+      - topicify-network
+networks:
+  topicify-network:
+    external: true

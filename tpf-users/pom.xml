@@ -4,26 +4,22 @@
     <parent>
         <groupId>io.voldsman.topicify</groupId>
         <artifactId>topicify-api</artifactId>
-        <version>0.0.1-DEV</version>
+        <version>${app.version}</version>
     </parent>
 
-    <groupId>org.example</groupId>
+    <name>tpf-users</name>
+    <groupId>io.voldsman.topicify.users</groupId>
     <artifactId>tpf-users</artifactId>
     <packaging>jar</packaging>
 
-    <name>tpf-users</name>
-    <url>http://maven.apache.org</url>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+            <groupId>io.voldsman.topicify.common</groupId>
+            <artifactId>tpf-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.voldsman.topicify.events.publisher</groupId>
+            <artifactId>tpf-event-publisher</artifactId>
         </dependency>
     </dependencies>
 </project>

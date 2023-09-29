@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.UUID;
 
 @Data
-public class RefreshTokenDto {
+public class GenerateRefreshTokenDto {
 
     private UUID userId;
     private String deviceFingerprint;

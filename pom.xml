@@ -1,25 +1,129 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.example</groupId>
-  <artifactId>topicify-api</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.4</version>
+        <relativePath/>
+    </parent>
 
-  <name>topicify-api</name>
-  <url>http://maven.apache.org</url>
+    <name>topicify-api</name>
+    <groupId>io.voldsman.topicify</groupId>
+    <artifactId>topicify-api</artifactId>
+    <version>${app.version}</version>
+    <packaging>pom</packaging>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <properties>
+        <app.version>0.0.1-DEV</app.version>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+        <java.version>17</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <springdoc-openapi.version>2.2.0</springdoc-openapi.version>
+        <jbcrypt.version>0.4</jbcrypt.version>
+    </properties>
+
+    <modules>
+        <module>tpf-core</module>
+        <module>tpf-users</module>
+        <module>tpf-users-profile</module>
+        <module>tpf-common</module>
+        <module>tpf-event-handler</module>
+        <module>tpf-event-publisher</module>
+        <module>tpf-access-token</module>
+        <module>tpf-auth</module>
+        <module>tpf-refresh-token</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.voldsman.topicify.common</groupId>
+                <artifactId>tpf-common</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.voldsman.topicify.events.handler</groupId>
+                <artifactId>tpf-event-handler</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.voldsman.topicify.events.publisher</groupId>
+                <artifactId>tpf-event-publisher</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.voldsman.topicify.users</groupId>
+                <artifactId>tpf-users</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.voldsman.topicify.users.profile</groupId>
+                <artifactId>tpf-users-profile</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.voldsman.topicify.accesstoken</groupId>
+                <artifactId>tpf-access-token</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.voldsman.topicify.refreshtoken</groupId>
+                <artifactId>tpf-refresh-token</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.voldsman.topicify.auth</groupId>
+                <artifactId>tpf-auth</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc-openapi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mindrot</groupId>
+                <artifactId>jbcrypt</artifactId>
+                <version>${jbcrypt.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+    </dependencies>
 </project>

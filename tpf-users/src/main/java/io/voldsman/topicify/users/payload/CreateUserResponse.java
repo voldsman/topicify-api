@@ -2,12 +2,14 @@ package io.voldsman.topicify.users.payload;
 
 import lombok.Data;
 
-@Data
-public class CreateUserRequest {
+import java.util.UUID;
 
-    private String username;
-    private String email;
-    private String password;
-    private String passwordConfirmation;
-    private boolean isTermsAccepted;
+@Data
+public class CreateUserResponse {
+
+    private String userId;
+
+    public CreateUserResponse(final UUID userId) {
+        this.userId = userId.toString();
+    }
 }

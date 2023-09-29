@@ -1,7 +1,7 @@
 package io.voldsman.topicify.common.exception;
 
-public class ForbiddenException extends RuntimeException {
-    public ForbiddenException(String message) {
+public class BadRequestException extends RuntimeException {
+    public BadRequestException(String message) {
         super(message);
     }
 }
