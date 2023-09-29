@@ -19,6 +19,9 @@ multi-module Spring Boot project
 #### Spring boot property:
 > spring.data.mongodb.auto-index-creation=true
 
+#### MongoDB Compass connection string:
+> mongodb://localhost:27017/?directConnection=true
+
 ### Redis
 ##### Redis console:
 > docker exec -it #redis_container_name bash
