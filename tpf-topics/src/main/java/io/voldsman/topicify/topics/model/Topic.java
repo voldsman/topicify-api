@@ -27,7 +27,7 @@ public class Topic {
     @Indexed
     private UUID userId;
 
-    private String title;
+    private String name;
     private String description;
 
     private boolean isPrivate;

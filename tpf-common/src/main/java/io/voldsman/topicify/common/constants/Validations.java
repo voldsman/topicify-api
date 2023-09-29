@@ -23,4 +23,5 @@ public class Validations {
 
     public final static String IMAGE_VALIDATION_REGEX = "\\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(png|jpg|jpeg)\\b";
 
+    public final static int MAX_ACTIVE_TOPICS = 10;
 }

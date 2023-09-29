@@ -12,6 +12,8 @@ public class Routes {
     public static final String REFRESH_ROUTE = "/api/refresh";
     public static final String CREATE_USER_ROUTE = "/api/users/create";
 
+    public static final String CREATE_TOPIC_ROUTE = "/api/topics";
+
     public static final List<String> PUBLIC_ROUTES = List.of(
             AUTH_ROUTE,
             REFRESH_ROUTE,
