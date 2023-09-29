@@ -18,28 +18,16 @@
             <artifactId>tpf-common</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.voldsman.topicify.events.handler</groupId>
-            <artifactId>tpf-event-handler</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.voldsman.topicify.events.publisher</groupId>
-            <artifactId>tpf-event-publisher</artifactId>
-        </dependency>
-        <dependency>
             <groupId>io.voldsman.topicify.users</groupId>
             <artifactId>tpf-users</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.voldsman.topicify.users.profile</groupId>
-            <artifactId>tpf-users-profile</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.voldsman.topicify.accesstoken</groupId>
-            <artifactId>tpf-access-token</artifactId>
-        </dependency>
-        <dependency>
             <groupId>io.voldsman.topicify.auth</groupId>
             <artifactId>tpf-auth</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.voldsman.topicify.topics</groupId>
+            <artifactId>tpf-topics</artifactId>
         </dependency>
 
         <dependency>

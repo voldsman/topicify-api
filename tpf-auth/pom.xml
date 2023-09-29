@@ -14,14 +14,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.voldsman.topicify.accesstoken</groupId>
-            <artifactId>tpf-access-token</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.voldsman.topicify.refreshtoken</groupId>
-            <artifactId>tpf-refresh-token</artifactId>
-        </dependency>
-        <dependency>
             <groupId>io.voldsman.topicify.users</groupId>
             <artifactId>tpf-users</artifactId>
         </dependency>

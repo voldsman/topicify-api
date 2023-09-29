@@ -7,9 +7,9 @@
         <version>${app.version}</version>
     </parent>
 
-    <name>tpf-users</name>
-    <groupId>io.voldsman.topicify.users</groupId>
-    <artifactId>tpf-users</artifactId>
+    <name>tpf-topics</name>
+    <groupId>io.voldsman.topicify.topics</groupId>
+    <artifactId>tpf-topics</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>

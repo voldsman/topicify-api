@@ -1,16 +1,15 @@
 package io.voldsman.topicify.users.service.impl;
 
-import io.voldsman.topicify.common.event.payload.CreateProfile;
 import io.voldsman.topicify.common.exception.AlreadyExistsException;
 import io.voldsman.topicify.common.exception.BadRequestException;
 import io.voldsman.topicify.common.utils.PasswordUtils;
 import io.voldsman.topicify.common.utils.StringUtils;
-import io.voldsman.topicify.events.publisher.EventPublisher;
 import io.voldsman.topicify.users.model.User;
 import io.voldsman.topicify.users.payload.CreateUserRequest;
 import io.voldsman.topicify.users.payload.CreateUserResponse;
 import io.voldsman.topicify.users.repository.UserRepository;
 import io.voldsman.topicify.users.service.CreateUserService;
+import io.voldsman.topicify.usersprofile.service.UserProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +23,7 @@ public class CreateUserServiceImpl implements CreateUserService {
 
     private final UserRepository userRepository;
 
-    private final EventPublisher eventPublisher;
+    private final UserProfileService userProfileService;
 
     @Override
     @Transactional
@@ -63,10 +62,8 @@ public class CreateUserServiceImpl implements CreateUserService {
 
         final var userId = persistedUser.getUserId();
 
-        // Publish event
-        CreateProfile createProfile = new CreateProfile(userId, username, now);
-        eventPublisher.publishCreateProfileEvent(createProfile);
-
+        // Create default profile
+        userProfileService.createDefaultProfile(userId, username, now);
         return new CreateUserResponse(userId);
     }
 }

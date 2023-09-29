@@ -31,13 +31,9 @@
     <modules>
         <module>tpf-core</module>
         <module>tpf-users</module>
-        <module>tpf-users-profile</module>
         <module>tpf-common</module>
-        <module>tpf-event-handler</module>
-        <module>tpf-event-publisher</module>
-        <module>tpf-access-token</module>
         <module>tpf-auth</module>
-        <module>tpf-refresh-token</module>
+        <module>tpf-topics</module>
     </modules>
 
     <dependencyManagement>
@@ -45,16 +41,6 @@
             <dependency>
                 <groupId>io.voldsman.topicify.common</groupId>
                 <artifactId>tpf-common</artifactId>
-                <version>${app.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.voldsman.topicify.events.handler</groupId>
-                <artifactId>tpf-event-handler</artifactId>
-                <version>${app.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.voldsman.topicify.events.publisher</groupId>
-                <artifactId>tpf-event-publisher</artifactId>
                 <version>${app.version}</version>
             </dependency>
             <dependency>
@@ -68,18 +54,13 @@
                 <version>${app.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.voldsman.topicify.accesstoken</groupId>
-                <artifactId>tpf-access-token</artifactId>
-                <version>${app.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.voldsman.topicify.refreshtoken</groupId>
-                <artifactId>tpf-refresh-token</artifactId>
-                <version>${app.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>io.voldsman.topicify.auth</groupId>
                 <artifactId>tpf-auth</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.voldsman.topicify.topics</groupId>
+                <artifactId>tpf-topics</artifactId>
                 <version>${app.version}</version>
             </dependency>
 
