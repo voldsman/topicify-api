@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"vold\",\n    \"email\": \"vold@gmail.com\",\n    \"password\": \"1234561\",\n    \"passwordConfirmation\": \"1234561\",\n    \"isTermsAccepted\": true\n}",
+							"raw": "{\n    \"username\": \"maks\",\n    \"email\": \"maks@gmail.com\",\n    \"password\": \"1234561\",\n    \"passwordConfirmation\": \"1234561\",\n    \"isTermsAccepted\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -72,7 +72,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"vold\",\n    \"password\": \"1234561\",\n    \"rememberMe\": false\n}",
+							"raw": "{\n    \"username\": \"maks\",\n    \"password\": \"1234561\",\n    \"rememberMe\": false\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -131,6 +131,100 @@
 							],
 							"path": [
 								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users profile",
+			"item": [
+				{
+					"name": "update bio",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bio\": \"Hello, I'm Maks\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverURL}}/users-profile/bio",
+							"host": [
+								"{{serverURL}}"
+							],
+							"path": [
+								"users-profile",
+								"bio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update image",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"image\": \"0fe6cda9-7db7-4a46-a522-917dbe71efce.png\",\n    \"type\": \"AVATAR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverURL}}/users-profile/image",
+							"host": [
+								"{{serverURL}}"
+							],
+							"path": [
+								"users-profile",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile test",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{serverURL}}/users-profile",
+							"host": [
+								"{{serverURL}}"
+							],
+							"path": [
+								"users-profile"
 							]
 						}
 					},
