@@ -1,11 +1,15 @@
 package io.voldsman.topicify.users.profile.service.impl;
 
 import io.voldsman.topicify.common.constants.Defaults;
+import io.voldsman.topicify.common.exception.NotFoundException;
 import io.voldsman.topicify.users.profile.module.UserProfile;
+import io.voldsman.topicify.users.profile.payload.UpdateBioRequest;
+import io.voldsman.topicify.users.profile.payload.UpdateImageRequest;
 import io.voldsman.topicify.users.profile.repository.UserProfileRepository;
 import io.voldsman.topicify.users.profile.service.UserProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -26,5 +30,37 @@ public class UserProfileServiceImpl implements UserProfileService {
         userProfile.setCoverImage(Defaults.DEFAULT_COVER_IMAGE);
         userProfile.setUpdatedAt(time);
         userProfileRepository.save(userProfile);
+    }
+
+    @Override
+    @Transactional
+    public void updateProfileBio(final UUID userId, final UpdateBioRequest updateBioRequest) {
+        UserProfile userProfile = findByUserId(userId);
+        userProfile.setBio(updateBioRequest.getBio());
+        userProfile.setUpdatedAt(LocalDateTime.now());
+        userProfileRepository.save(userProfile);
+    }
+
+    @Override
+    @Transactional
+    public void updateProfileImage(UUID userId, UpdateImageRequest updateImageRequest) {
+        UserProfile userProfile = findByUserId(userId);
+
+        final String image = updateImageRequest.getImage();
+        UpdateImageRequest.ImageType imageType = updateImageRequest.getType();
+        if (imageType.equals(UpdateImageRequest.ImageType.AVATAR)) {
+            userProfile.setAvatarImage(image);
+        } else {
+            userProfile.setCoverImage(image);
+        }
+        userProfile.setUpdatedAt(LocalDateTime.now());
+        userProfileRepository.save(userProfile);
+    }
+
+    private UserProfile findByUserId(final UUID userId) {
+        return userProfileRepository.findByUserId(userId)
+                .orElseThrow(
+                        () -> new NotFoundException("User profile not found by provided id")
+                );
     }
 }
