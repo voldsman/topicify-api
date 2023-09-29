@@ -28,7 +28,7 @@ multi-module Spring Boot project
 #### Enable Redis TTL:
 > redis-cli: $ CONFIG SET notify-keyspace-events Ex
 
-### Flush records:
+#### Flush records:
 > redis-cli: $ FLUSHALL
 
 #### Spring Boot config:
