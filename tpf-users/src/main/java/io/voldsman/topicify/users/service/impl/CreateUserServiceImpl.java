@@ -63,7 +63,7 @@ public class CreateUserServiceImpl implements CreateUserService {
         final var userId = persistedUser.getUserId();
 
         // Create default profile
-        userProfileService.createDefaultProfile(userId, username, now);
+        userProfileService.createDefaultProfile(userId);
         return new CreateUserResponse(userId);
     }
 }

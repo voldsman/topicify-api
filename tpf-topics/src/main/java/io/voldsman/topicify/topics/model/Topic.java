@@ -28,7 +28,6 @@ public class Topic {
     private UUID userId;
 
     private String title;
-
     private String description;
 
     private boolean isPrivate;

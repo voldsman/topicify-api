@@ -12,7 +12,7 @@ import java.util.UUID;
 @Setter
 @ToString
 @NoArgsConstructor
-@EqualsAndHashCode(of = {"userId", "username"})
+@EqualsAndHashCode(of = {"id", "userId"})
 
 @Document(collection = "users_profile")
 public class UserProfile {
@@ -22,9 +22,6 @@ public class UserProfile {
 
     @Indexed(unique = true)
     private UUID userId;
-
-    @Indexed(unique = true)
-    private String username;
 
     private String avatarImage;
 
