@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"maks\",\n    \"email\": \"maks@gmail.com\",\n    \"password\": \"1234561\",\n    \"passwordConfirmation\": \"1234561\",\n    \"isTermsAccepted\": true\n}",
+							"raw": "{\n    \"username\": \"vold\",\n    \"email\": \"vold@gmail.com\",\n    \"password\": \"1234561\",\n    \"passwordConfirmation\": \"1234561\",\n    \"isTermsAccepted\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -72,7 +72,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"maks\",\n    \"password\": \"1234561\",\n    \"rememberMe\": false\n}",
+							"raw": "{\n    \"username\": \"vold\",\n    \"password\": \"1234561\",\n    \"rememberMe\": false\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -208,6 +208,39 @@
 					"response": []
 				},
 				{
+					"name": "update links",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"links\": [\n        {\n            \"name\": \"facebook\",\n            \"url\": \"https://localhost:9000/users?profile=abra\"\n        },\n        {\n            \"name\": \"instagram\",\n            \"url\": \"https://localhost:9000/users?profile=abra\"\n        },\n        {\n            \"name\": \"linkedin\",\n            \"url\": \"https://localhost:9000/users?profile=abra\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverURL}}/users-profile/links",
+							"host": [
+								"{{serverURL}}"
+							],
+							"path": [
+								"users-profile",
+								"links"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "profile test",
 					"request": {
 						"method": "GET",
@@ -225,6 +258,43 @@
 							],
 							"path": [
 								"users-profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "topics",
+			"item": [
+				{
+					"name": "create topic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"намалювати картину по номерах\",\n    \"description\": \"недавно купив картину по номерах, настав час почати її малювати\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverURL}}/topics",
+							"host": [
+								"{{serverURL}}"
+							],
+							"path": [
+								"topics"
 							]
 						}
 					},

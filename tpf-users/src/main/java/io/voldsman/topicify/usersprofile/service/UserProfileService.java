@@ -2,6 +2,7 @@ package io.voldsman.topicify.usersprofile.service;
 
 import io.voldsman.topicify.usersprofile.payload.UpdateBioRequest;
 import io.voldsman.topicify.usersprofile.payload.UpdateImageRequest;
+import io.voldsman.topicify.usersprofile.payload.UpdateLinksRequest;
 
 import java.util.UUID;
 
@@ -12,4 +13,6 @@ public interface UserProfileService {
     void updateProfileBio(final UUID userId, final UpdateBioRequest updateBioRequest);
 
     void updateProfileImage(final UUID userId, final UpdateImageRequest updateImageRequest);
+
+    void updateProfileLinks(final UUID userId, final UpdateLinksRequest updateLinksRequest);
 }

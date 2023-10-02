@@ -21,6 +21,11 @@ public class Validations {
 
     // profile
     public final static int MAX_PROFILE_BIO_SYMBOLS_LENGTH = 500;
+    public final static int MAX_PROFILE_LINKS = 3;
+    public final static int MAX_PROFILE_LINK_NAME_LENGTH = 30;
+    public final static int MAX_PROFILE_LINK_URL_LENGTH = 200;
+    public final static String PROFILE_URL_REGEX = "^https://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
+
     public final static String IMAGE_VALIDATION_REGEX = "\\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(png|jpg|jpeg)\\b";
 
     // topics

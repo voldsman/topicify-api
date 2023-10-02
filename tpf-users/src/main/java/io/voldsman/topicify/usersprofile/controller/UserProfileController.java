@@ -4,6 +4,7 @@ import io.voldsman.topicify.common.constants.Defaults;
 import io.voldsman.topicify.common.payload.ApiResponse;
 import io.voldsman.topicify.usersprofile.payload.UpdateBioRequest;
 import io.voldsman.topicify.usersprofile.payload.UpdateImageRequest;
+import io.voldsman.topicify.usersprofile.payload.UpdateLinksRequest;
 import io.voldsman.topicify.usersprofile.service.UserProfileService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,14 @@ public class UserProfileController {
                                                          @Valid @RequestBody UpdateImageRequest updateImageRequest) {
         userProfileService.updateProfileImage(userId, updateImageRequest);
         ApiResponse<Void> apiResponse = new ApiResponse<>("Profile image updated", true, null);
+        return new ResponseEntity<>(apiResponse, HttpStatus.OK);
+    }
+
+    @PatchMapping("/links")
+    public ResponseEntity<ApiResponse<Void>> updateLinks(@RequestAttribute(Defaults.REQUEST_ATTR_USERID_PARAM) UUID userId,
+                                                         @Valid @RequestBody UpdateLinksRequest updateLinksRequest) {
+        userProfileService.updateProfileLinks(userId, updateLinksRequest);
+        ApiResponse<Void> apiResponse = new ApiResponse<>("Profile links updated", true, null);
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);
     }
 }
