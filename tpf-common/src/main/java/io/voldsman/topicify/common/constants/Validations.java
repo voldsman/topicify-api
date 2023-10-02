@@ -19,9 +19,13 @@ public class Validations {
     public final static int MIN_PASSWORD_LENGTH = 6;
     public final static int MAX_PASSWORD_LENGTH = 50;
 
+    // profile
     public final static int MAX_PROFILE_BIO_SYMBOLS_LENGTH = 500;
-
     public final static String IMAGE_VALIDATION_REGEX = "\\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(png|jpg|jpeg)\\b";
 
+    // topics
     public final static int MAX_ACTIVE_TOPICS = 10;
+    public final static int MIN_TOPIC_NAME_LENGTH = 5;
+    public final static int MAX_TOPIC_NAME_LENGTH = 90;
+    public final static int MAX_TOPIC_DESCRIPTION_LENGTH = 150;
 }
