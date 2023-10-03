@@ -29,6 +29,10 @@
             <groupId>io.voldsman.topicify.topics</groupId>
             <artifactId>tpf-topics</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.voldsman.topicify.posts</groupId>
+            <artifactId>tpf-posts</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springdoc</groupId>

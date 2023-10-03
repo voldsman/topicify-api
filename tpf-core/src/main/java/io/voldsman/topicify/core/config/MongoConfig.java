@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
         "io.voldsman.topicify.usersprofile.repository",
         "io.voldsman.topicify.refreshtoken.repository",
         "io.voldsman.topicify.topics.repository",
+        "io.voldsman.topicify.posts.repository"
 })
 public class MongoConfig {
 

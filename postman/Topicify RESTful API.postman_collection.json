@@ -281,7 +281,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"намалювати картину по номерах\",\n    \"description\": \"недавно купив картину по номерах, настав час почати її малювати\"\n}",
+							"raw": "{\n    \"name\": \"test topic #2\",\n    \"description\": \"test topic description\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -295,6 +295,43 @@
 							],
 							"path": [
 								"topics"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "create post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"topicId\": \"cbfb4e0a-921e-4636-8e8f-2f8d2999aa09\",\n    \"body\": \"Hello, it's topc's post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverURL}}/posts",
+							"host": [
+								"{{serverURL}}"
+							],
+							"path": [
+								"posts"
 							]
 						}
 					},

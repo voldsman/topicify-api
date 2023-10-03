@@ -28,9 +28,14 @@ public class Validations {
 
     public final static String IMAGE_VALIDATION_REGEX = "\\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(png|jpg|jpeg)\\b";
 
+    public final static String UUID_VALIDATION_REGEX = "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
+
     // topics
     public final static int MAX_ACTIVE_TOPICS = 10;
     public final static int MIN_TOPIC_NAME_LENGTH = 5;
     public final static int MAX_TOPIC_NAME_LENGTH = 90;
     public final static int MAX_TOPIC_DESCRIPTION_LENGTH = 150;
+
+    // posts
+    public final static int MAX_POST_BODY_LENGTH = 500;
 }

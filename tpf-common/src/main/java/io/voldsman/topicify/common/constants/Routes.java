@@ -13,6 +13,7 @@ public class Routes {
     public static final String CREATE_USER_ROUTE = "/api/users/create";
 
     public static final String CREATE_TOPIC_ROUTE = "/api/topics";
+    public static final String CREATE_POST_ROUTE = "/api/posts";
 
     public static final List<String> PUBLIC_ROUTES = List.of(
             AUTH_ROUTE,
