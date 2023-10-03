@@ -2,6 +2,7 @@ package io.voldsman.topicify.usersprofile.controller;
 
 import io.voldsman.topicify.common.constants.Defaults;
 import io.voldsman.topicify.common.payload.ApiResponse;
+import io.voldsman.topicify.usersprofile.payload.ProfileResponse;
 import io.voldsman.topicify.usersprofile.payload.UpdateBioRequest;
 import io.voldsman.topicify.usersprofile.payload.UpdateImageRequest;
 import io.voldsman.topicify.usersprofile.payload.UpdateLinksRequest;
@@ -20,11 +21,6 @@ import java.util.UUID;
 public class UserProfileController {
 
     private final UserProfileService userProfileService;
-
-    @GetMapping
-    public String test(@RequestAttribute(Defaults.REQUEST_ATTR_USERID_PARAM) UUID userId) {
-        return "Users working..." + userId;
-    }
 
     @PatchMapping("/bio")
     public ResponseEntity<ApiResponse<Void>> updateBio(@RequestAttribute(Defaults.REQUEST_ATTR_USERID_PARAM) UUID userId,
@@ -47,6 +43,21 @@ public class UserProfileController {
                                                          @Valid @RequestBody UpdateLinksRequest updateLinksRequest) {
         userProfileService.updateProfileLinks(userId, updateLinksRequest);
         ApiResponse<Void> apiResponse = new ApiResponse<>("Profile links updated", true, null);
+        return new ResponseEntity<>(apiResponse, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<ApiResponse<ProfileResponse>> getMyProfile(@RequestAttribute(Defaults.REQUEST_ATTR_USERID_PARAM) UUID tokenUserId) {
+        ProfileResponse myProfile = userProfileService.getMyProfile(tokenUserId);
+        ApiResponse<ProfileResponse> apiResponse = new ApiResponse<>("My profile", true, myProfile);
+        return new ResponseEntity<>(apiResponse, HttpStatus.OK);
+    }
+
+    @GetMapping("/{profileUserId}")
+    public ResponseEntity<ApiResponse<ProfileResponse>> previewUserProfile(@RequestAttribute(Defaults.REQUEST_ATTR_USERID_PARAM) UUID tokenUserId,
+                                                                           @PathVariable UUID profileUserId) {
+        ProfileResponse previewUserProfile = userProfileService.previewUserProfile(tokenUserId, profileUserId);
+        ApiResponse<ProfileResponse> apiResponse = new ApiResponse<>("Preview profile", true, previewUserProfile);
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);
     }
 }

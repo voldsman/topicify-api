@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +22,17 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userRepository.findByUsernameIgnoreCase(username);
         if (userOptional.isEmpty()) {
             throw new NotFoundException("User not found by username");
+        }
+
+        User user = userOptional.get();
+        return mapToUserDto(user);
+    }
+
+    @Override
+    public UserDto getUserByUserId(final UUID userId) {
+        Optional<User> userOptional = userRepository.findByUserIdAndIsDeletedFalseAndIsBlockedFalse(userId);
+        if (userOptional.isEmpty()) {
+            throw new NotFoundException("User not found by userId");
         }
 
         User user = userOptional.get();

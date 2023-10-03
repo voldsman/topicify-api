@@ -1,9 +1,13 @@
 package io.voldsman.topicify.usersprofile.service.impl;
 
 import io.voldsman.topicify.common.constants.Defaults;
+import io.voldsman.topicify.common.exception.BadRequestException;
 import io.voldsman.topicify.common.exception.NotFoundException;
+import io.voldsman.topicify.users.payload.UserDto;
+import io.voldsman.topicify.users.service.UserService;
 import io.voldsman.topicify.usersprofile.module.UserProfile;
 import io.voldsman.topicify.usersprofile.module.UserProfileLink;
+import io.voldsman.topicify.usersprofile.payload.ProfileResponse;
 import io.voldsman.topicify.usersprofile.payload.UpdateBioRequest;
 import io.voldsman.topicify.usersprofile.payload.UpdateImageRequest;
 import io.voldsman.topicify.usersprofile.payload.UpdateLinksRequest;
@@ -23,6 +27,8 @@ import java.util.UUID;
 public class UserProfileServiceImpl implements UserProfileService {
 
     private final UserProfileRepository userProfileRepository;
+
+    private final UserService userService;
 
     @Override
     public void createDefaultProfile(final UUID userId) {
@@ -78,10 +84,51 @@ public class UserProfileServiceImpl implements UserProfileService {
         userProfileRepository.save(userProfile);
     }
 
+    @Override
+    public ProfileResponse getMyProfile(final UUID userId) {
+        UserDto userDto = userService.getUserByUserId(userId);
+        UserProfile userProfile = findByUserId(userId);
+
+        ProfileResponse profileResponse = buildProfileResponse(userDto, userProfile);
+        profileResponse.setResourceOwner(true);
+        return profileResponse;
+    }
+
+    @Override
+    public ProfileResponse previewUserProfile(UUID tokenUserId, UUID profileUserId) {
+        if (tokenUserId.equals(profileUserId)) {
+            throw new BadRequestException("Please user MyProfile endpoint");
+        }
+        UserDto userDto = userService.getUserByUserId(profileUserId);
+        UserProfile userProfile = findByUserId(profileUserId);
+
+        ProfileResponse profileResponse = buildProfileResponse(userDto, userProfile);
+        profileResponse.setResourceOwner(false);
+        return profileResponse;
+    }
+
     private UserProfile findByUserId(final UUID userId) {
         return userProfileRepository.findByUserId(userId)
                 .orElseThrow(
                         () -> new NotFoundException("User profile not found by provided id")
                 );
+    }
+
+    private ProfileResponse buildProfileResponse(final UserDto userDto, final UserProfile userProfile) {
+        ProfileResponse profileResponse = new ProfileResponse();
+        profileResponse.setUserId(userDto.getUserId().toString());
+        profileResponse.setUsername(userDto.getUsername());
+        profileResponse.setAvatarImage(userProfile.getAvatarImage());
+        profileResponse.setCoverImage(userProfile.getCoverImage());
+        profileResponse.setBio(userProfile.getBio());
+        profileResponse.setLinks(userProfile.getLinks()
+                .stream()
+                .map(l -> {
+                    ProfileResponse.Link link = new ProfileResponse.Link();
+                    link.setName(l.getName());
+                    link.setUrl(l.getUrl());
+                    return link;
+                }).toList());
+        return profileResponse;
     }
 }
