@@ -96,6 +96,17 @@ public class AdviceExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(InternalException.class)
+    public ResponseEntity<ApiResponse<ApiError>> handleInternalException(InternalException ex, WebRequest request) {
+        ApiError apiError = new ApiError(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                ex.getMessage(),
+                request.getDescription(false));
+
+        ApiResponse<ApiError> errorResponse = new ApiResponse<>("Internal error", false, apiError);
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<ApiError>> handleException(Exception ex, WebRequest request) {
         ApiError apiError = new ApiError(

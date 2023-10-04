@@ -35,6 +35,7 @@
         <module>tpf-auth</module>
         <module>tpf-topics</module>
         <module>tpf-posts</module>
+        <module>tpf-images</module>
     </modules>
 
     <dependencyManagement>
@@ -67,6 +68,11 @@
             <dependency>
                 <groupId>io.voldsman.topicify.posts</groupId>
                 <artifactId>tpf-posts</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.voldsman.topicify.images</groupId>
+                <artifactId>tpf-images</artifactId>
                 <version>${app.version}</version>
             </dependency>
 

@@ -23,4 +23,6 @@ public class Defaults {
     public static final String DEVICE_FINGERPRINT_HEADER = "x-device-fp";
     public static final String AUTHORIZATION_HEADER = "authorization";
     public static final String REQUEST_ATTR_USERID_PARAM = "userId";
+
+    public static final String DEFAULT_IMAGES_FS_UPLOAD_FOLDER = "images";
 }
