@@ -18,5 +18,6 @@ public class CreatePostRequest {
     @Size(max = Validations.MAX_POST_BODY_LENGTH)
     private String body;
 
+    @NotNull
     private List<String> images;
 }

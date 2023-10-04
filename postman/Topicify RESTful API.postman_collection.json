@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"vold\",\n    \"email\": \"vold@gmail.com\",\n    \"password\": \"1234561\",\n    \"passwordConfirmation\": \"1234561\",\n    \"isTermsAccepted\": true\n}",
+							"raw": "{\n    \"username\": \"voldsman\",\n    \"email\": \"voldsman@gmail.com\",\n    \"password\": \"1234561\",\n    \"passwordConfirmation\": \"1234561\",\n    \"isTermsAccepted\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -72,7 +72,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"vold\",\n    \"password\": \"1234561\",\n    \"rememberMe\": false\n}",
+							"raw": "{\n    \"username\": \"vold\",\n    \"password\": \"1234561\",\n    \"rememberMe\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -154,7 +154,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bio\": \"Hello, I'm Maks\"\n}",
+							"raw": "{\n    \"bio\": \"Hello, I'm Vold\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -241,7 +241,7 @@
 					"response": []
 				},
 				{
-					"name": "profile test",
+					"name": "my profile",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -258,6 +258,30 @@
 							],
 							"path": [
 								"users-profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "preview profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{serverURL}}/users-profile/3f197265-71ba-4c92-83e7-7e7e68f47471",
+							"host": [
+								"{{serverURL}}"
+							],
+							"path": [
+								"users-profile",
+								"3f197265-71ba-4c92-83e7-7e7e68f47471"
 							]
 						}
 					},
@@ -318,7 +342,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"topicId\": \"cbfb4e0a-921e-4636-8e8f-2f8d2999aa09\",\n    \"body\": \"Hello, it's topc's post\"\n}",
+							"raw": "{\n    \"topicId\": \"cbfb4e0a-921e-4636-8e8f-2f8d2999aa09\",\n    \"body\": \"Hello, it's topc's post\",\n    \"images\": [\n        \"0c2e78e7-c73a-412f-91e7-cb1b4e83b0fe.png\"\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -332,6 +356,52 @@
 							],
 							"path": [
 								"posts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "images",
+			"item": [
+				{
+					"name": "upload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/Users/vold/Downloads/AI_Images/NBH_menu_screen_for_the_island_survival_game_with_3_buttons_7ca03a22-aa3f-4696-bc74-fb5617ba43a0.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{serverURL}}/images/upload",
+							"host": [
+								"{{serverURL}}"
+							],
+							"path": [
+								"images",
+								"upload"
+							],
+							"query": [
+								{
+									"key": "files",
+									"value": null,
+									"disabled": true
+								}
 							]
 						}
 					},
