@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class CreatePostRequest {
 
@@ -15,4 +17,6 @@ public class CreatePostRequest {
 
     @Size(max = Validations.MAX_POST_BODY_LENGTH)
     private String body;
+
+    private List<String> images;
 }
