@@ -32,6 +32,7 @@ public class PostServiceImpl implements PostService {
         Post post = new Post();
         post.setPostId(UUID.randomUUID().toString());
         post.setTopicId(topicDTO.getTopicId());
+        post.setUserId(userId);
         post.setBody(createPostRequest.getBody());
         if (!createPostRequest.getImages().isEmpty()) {
             post.setImages(createPostRequest.getImages());
