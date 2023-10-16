@@ -7,5 +7,5 @@ import java.util.UUID;
 
 public interface CreateTopicService {
 
-    CreateTopicResponse create(final UUID userId, final CreateTopicRequest createTopicRequest);
+    CreateTopicResponse create(final String userId, final CreateTopicRequest createTopicRequest);
 }

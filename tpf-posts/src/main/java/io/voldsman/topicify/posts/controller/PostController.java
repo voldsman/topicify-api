@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.UUID;
-
 @RestController
 @RequiredArgsConstructor
 public class PostController {
@@ -24,7 +22,7 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping(Routes.CREATE_POST_ROUTE)
-    public ResponseEntity<ApiResponse<CreatePostResponse>> create(@RequestAttribute(Defaults.REQUEST_ATTR_USERID_PARAM) UUID userId,
+    public ResponseEntity<ApiResponse<CreatePostResponse>> create(@RequestAttribute(Defaults.REQUEST_ATTR_USERID_PARAM) String userId,
                                                                   @Valid @RequestBody CreatePostRequest createPostRequest) {
         CreatePostResponse createPostResponse = postService.create(userId, createPostRequest);
 

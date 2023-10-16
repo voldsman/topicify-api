@@ -1,10 +1,8 @@
 package io.voldsman.topicify.topics.service;
 
-import io.voldsman.topicify.topics.payload.TopicDTO;
-
-import java.util.UUID;
+import io.voldsman.topicify.topics.payload.TopicDto;
 
 public interface TopicService {
 
-    TopicDTO getByTopicId(final UUID topicId, final UUID userId);
+    TopicDto getByTopicId(final String topicId, final String userId);
 }

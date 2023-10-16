@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -22,10 +21,10 @@ public class Topic {
     private String id;
 
     @Indexed
-    private UUID topicId;
+    private String topicId;
 
     @Indexed
-    private UUID userId;
+    private String userId;
 
     private String name;
     private String description;

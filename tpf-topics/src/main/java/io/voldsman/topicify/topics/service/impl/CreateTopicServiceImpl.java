@@ -20,7 +20,7 @@ public class CreateTopicServiceImpl implements CreateTopicService {
     private final TopicRepository topicRepository;
 
     @Override
-    public CreateTopicResponse create(UUID userId, CreateTopicRequest createTopicRequest) {
+    public CreateTopicResponse create(final String userId, CreateTopicRequest createTopicRequest) {
         long activeTopicsCount = topicRepository.countByUserIdAndIsArchivedFalseAndIsDeletedFalse(userId);
         if (activeTopicsCount > Validations.MAX_ACTIVE_TOPICS) {
             throw new BadRequestException("Reached maximum of active topics count");
@@ -30,7 +30,7 @@ public class CreateTopicServiceImpl implements CreateTopicService {
 
         Topic topic = new Topic();
         topic.setUserId(userId);
-        topic.setTopicId(UUID.randomUUID());
+        topic.setTopicId(UUID.randomUUID().toString());
         topic.setName(createTopicRequest.getName());
         topic.setDescription(createTopicRequest.getDescription());
         topic.setPrivate(false);

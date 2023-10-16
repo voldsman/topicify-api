@@ -12,8 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
 @RestController
 @RequestMapping(Routes.CREATE_TOPIC_ROUTE)
 @RequiredArgsConstructor
@@ -23,7 +21,7 @@ public class CreateTopicController {
 
     @PostMapping
     public ResponseEntity<ApiResponse<CreateTopicResponse>> create(
-            @RequestAttribute(Defaults.REQUEST_ATTR_USERID_PARAM) UUID userId,
+            @RequestAttribute(Defaults.REQUEST_ATTR_USERID_PARAM) String userId,
             @Valid @RequestBody CreateTopicRequest createTopicRequest) {
         CreateTopicResponse createTopicResponse = createTopicService.create(userId, createTopicRequest);
 

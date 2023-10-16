@@ -5,7 +5,7 @@ import io.voldsman.topicify.posts.payload.CreatePostRequest;
 import io.voldsman.topicify.posts.payload.CreatePostResponse;
 import io.voldsman.topicify.posts.repository.PostRepository;
 import io.voldsman.topicify.posts.service.PostService;
-import io.voldsman.topicify.topics.payload.TopicDTO;
+import io.voldsman.topicify.topics.payload.TopicDto;
 import io.voldsman.topicify.topics.service.TopicService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,15 +22,15 @@ public class PostServiceImpl implements PostService {
     private final TopicService topicService;
 
     @Override
-    public CreatePostResponse create(final UUID userId, final CreatePostRequest createPostRequest) {
+    public CreatePostResponse create(final String userId, final CreatePostRequest createPostRequest) {
 
-        UUID topicId = UUID.fromString(createPostRequest.getTopicId());
-        TopicDTO topicDTO = topicService.getByTopicId(topicId, userId);
+        final var topicId = createPostRequest.getTopicId();
+        TopicDto topicDTO = topicService.getByTopicId(topicId, userId);
 
         LocalDateTime now = LocalDateTime.now();
 
         Post post = new Post();
-        post.setPostId(UUID.randomUUID());
+        post.setPostId(UUID.randomUUID().toString());
         post.setTopicId(topicDTO.getTopicId());
         post.setBody(createPostRequest.getBody());
         if (!createPostRequest.getImages().isEmpty()) {
@@ -41,8 +41,6 @@ public class PostServiceImpl implements PostService {
         post.setDeleted(false);
         post.setDeletedAt(null);
         final Post persistedPost = postRepository.save(post);
-        // TODO: create newsfeed record
-        // TODO: add images
         return new CreatePostResponse(persistedPost.getPostId());
     }
 }

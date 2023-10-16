@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -23,13 +22,13 @@ public class Post {
     private String id;
 
     @Indexed
-    private UUID postId;
+    private String postId;
 
     @Indexed
-    private UUID topicId;
+    private String topicId;
 
     @Indexed
-    private UUID userId;
+    private String userId;
 
     private String body;
 
