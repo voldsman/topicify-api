@@ -18,6 +18,19 @@ public class Routes {
     public static final List<String> PUBLIC_ROUTES = List.of(
             AUTH_ROUTE,
             REFRESH_ROUTE,
-            CREATE_USER_ROUTE
+            CREATE_USER_ROUTE,
+
+            // TODO: Temp added Swagger links, need to refactor it based on active profile
+            "/docs/swagger",
+            "/docs/api-docs",
+            "/docs/api-docs/swagger-config",
+            "/docs/swagger-ui/index.html",
+            "/docs/swagger-ui/favicon-16x16.png",
+            "/docs/swagger-ui/favicon-32x32.png",
+            "/docs/swagger-ui/swagger-initializer.js",
+            "/docs/swagger-ui/swagger-ui-standalone-preset.js",
+            "/docs/swagger-ui/swagger-ui-bundle.js",
+            "/docs/swagger-ui/index.css",
+            "/docs/swagger-ui/swagger-ui.css"
     );
 }
