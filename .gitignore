@@ -1,4 +1,4 @@
-images/*.png
+img_uploads/
 logs/
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -38,4 +38,4 @@ build/
 .vscode/
 
 ### Mac OS ###
-.DS_Store
+.DS_Store!/images/
