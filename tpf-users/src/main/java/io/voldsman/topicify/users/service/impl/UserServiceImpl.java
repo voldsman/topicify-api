@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto getUserByUserId(final UUID userId) {
+    public UserDto getUserByUserId(final String userId) {
         Optional<User> userOptional = userRepository.findByUserIdAndIsDeletedFalseAndIsBlockedFalse(userId);
         if (userOptional.isEmpty()) {
             throw new NotFoundException("User not found by userId");

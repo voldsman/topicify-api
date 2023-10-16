@@ -10,7 +10,6 @@ import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -27,7 +26,7 @@ public class AccessToken {
     private String accessToken;
 
     @Indexed
-    private UUID userId;
+    private String userId;
 
     private LocalDateTime createdAt;
 }

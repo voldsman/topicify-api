@@ -50,7 +50,7 @@ public class CreateUserServiceImpl implements CreateUserService {
         final var now = LocalDateTime.now();
 
         User user = new User();
-        user.setUserId(UUID.randomUUID());
+        user.setUserId(UUID.randomUUID().toString());
         user.setUsername(username);
         user.setEmail(email);
         user.setPassword(hashedPassword);

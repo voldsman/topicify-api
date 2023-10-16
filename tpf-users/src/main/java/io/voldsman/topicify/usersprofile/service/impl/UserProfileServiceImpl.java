@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +30,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     private final UserService userService;
 
     @Override
-    public void createDefaultProfile(final UUID userId) {
+    public void createDefaultProfile(final String userId) {
         UserProfile userProfile = new UserProfile();
         userProfile.setUserId(userId);
         userProfile.setBio("");
@@ -44,7 +43,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     @Transactional
-    public void updateProfileBio(final UUID userId, final UpdateBioRequest updateBioRequest) {
+    public void updateProfileBio(final String userId, final UpdateBioRequest updateBioRequest) {
         UserProfile userProfile = findByUserId(userId);
         userProfile.setBio(updateBioRequest.getBio());
         userProfile.setUpdatedAt(LocalDateTime.now());
@@ -53,7 +52,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     @Transactional
-    public void updateProfileImage(UUID userId, UpdateImageRequest updateImageRequest) {
+    public void updateProfileImage(final String userId, UpdateImageRequest updateImageRequest) {
         UserProfile userProfile = findByUserId(userId);
 
         final String image = updateImageRequest.getImage();
@@ -69,7 +68,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     @Transactional
-    public void updateProfileLinks(UUID userId, UpdateLinksRequest updateLinksRequest) {
+    public void updateProfileLinks(final String userId, UpdateLinksRequest updateLinksRequest) {
         UserProfile userProfile = findByUserId(userId);
 
         List<UserProfileLink> userProfileLinks = updateLinksRequest.getLinks().stream().map(l -> {
@@ -85,7 +84,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
-    public ProfileResponse getMyProfile(final UUID userId) {
+    public ProfileResponse getMyProfile(final String userId) {
         UserDto userDto = userService.getUserByUserId(userId);
         UserProfile userProfile = findByUserId(userId);
 
@@ -95,7 +94,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
-    public ProfileResponse previewUserProfile(UUID tokenUserId, UUID profileUserId) {
+    public ProfileResponse previewUserProfile(final String tokenUserId, final String profileUserId) {
         if (tokenUserId.equals(profileUserId)) {
             throw new BadRequestException("Please user MyProfile endpoint");
         }
@@ -107,7 +106,7 @@ public class UserProfileServiceImpl implements UserProfileService {
         return profileResponse;
     }
 
-    private UserProfile findByUserId(final UUID userId) {
+    private UserProfile findByUserId(final String userId) {
         return userProfileRepository.findByUserId(userId)
                 .orElseThrow(
                         () -> new NotFoundException("User profile not found by provided id")
@@ -116,7 +115,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     private ProfileResponse buildProfileResponse(final UserDto userDto, final UserProfile userProfile) {
         ProfileResponse profileResponse = new ProfileResponse();
-        profileResponse.setUserId(userDto.getUserId().toString());
+        profileResponse.setUserId(userDto.getUserId());
         profileResponse.setUsername(userDto.getUsername());
         profileResponse.setAvatarImage(userProfile.getAvatarImage());
         profileResponse.setCoverImage(userProfile.getCoverImage());

@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +30,7 @@ public class RefreshServiceImpl implements RefreshService {
             throw new ForbiddenException("Refresh token expired");
         }
 
-        final UUID userId = refreshToken.getUserId();
+        final var userId = refreshToken.getUserId();
 
         // Clear access tokens
         accessTokenService.deleteAllByUserId(userId);

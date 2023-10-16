@@ -5,11 +5,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface RefreshTokenRepository extends MongoRepository<RefreshToken, String> {
 
     Optional<RefreshToken> findByRefreshToken(final String refreshTokenString);
 
-    List<RefreshToken> findByUserId(final UUID userId);
+    List<RefreshToken> findByUserId(final String userId);
 }

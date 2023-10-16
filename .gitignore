@@ -1,4 +1,4 @@
-images/
+images/*.png
 logs/
 target/
 !.mvn/wrapper/maven-wrapper.jar

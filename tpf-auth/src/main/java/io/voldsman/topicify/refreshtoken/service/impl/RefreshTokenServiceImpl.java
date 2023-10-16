@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -55,7 +54,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
     }
 
     @Override
-    public void deleteAllByUserId(final UUID userId) {
+    public void deleteAllByUserId(final String userId) {
         List<RefreshToken> refreshTokens = refreshTokenRepository.findByUserId(userId);
         if (!refreshTokens.isEmpty()) {
             refreshTokenRepository.deleteAll(refreshTokens);

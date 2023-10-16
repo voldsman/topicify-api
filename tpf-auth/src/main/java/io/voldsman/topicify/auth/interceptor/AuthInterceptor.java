@@ -15,7 +15,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.util.Objects;
-import java.util.UUID;
 
 @Slf4j
 @Component
@@ -45,7 +44,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         }
 
         log.info("<> Secured endpoint, token valid, proceed");
-        final UUID userId = accessTokenDetails.getUserId();
+        final var userId = accessTokenDetails.getUserId();
         Objects.requireNonNull(RequestContextHolder.getRequestAttributes())
                 .setAttribute(Defaults.REQUEST_ATTR_USERID_PARAM, userId, RequestAttributes.SCOPE_REQUEST);
         return true;

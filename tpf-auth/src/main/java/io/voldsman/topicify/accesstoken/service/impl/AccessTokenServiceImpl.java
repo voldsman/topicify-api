@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +20,7 @@ public class AccessTokenServiceImpl implements AccessTokenService {
     private final AccessTokenRepository accessTokenRepository;
 
     @Override
-    public String generateAccessToken(UUID userId) {
+    public String generateAccessToken(final String userId) {
         final var accessTokenString = StringUtils.generateRandomString(Defaults.ACCESS_TOKEN_LENGTH);
 
         AccessToken accessToken = new AccessToken();
@@ -47,7 +46,7 @@ public class AccessTokenServiceImpl implements AccessTokenService {
     }
 
     @Override
-    public void deleteAllByUserId(UUID userId) {
+    public void deleteAllByUserId(final String userId) {
         List<AccessToken> accessTokens = accessTokenRepository.findByUserId(userId);
         if (!accessTokens.isEmpty()) {
             accessTokenRepository.deleteAll(accessTokens);

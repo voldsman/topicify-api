@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -22,7 +21,7 @@ public class UserProfile {
     private String id;
 
     @Indexed(unique = true)
-    private UUID userId;
+    private String userId;
 
     private String avatarImage;
 

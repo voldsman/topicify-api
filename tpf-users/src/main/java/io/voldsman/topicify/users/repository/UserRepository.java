@@ -4,7 +4,6 @@ import io.voldsman.topicify.users.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
-import java.util.UUID;
 
 public interface UserRepository extends MongoRepository<User, String> {
 
@@ -14,5 +13,5 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     Optional<User> findByUsernameIgnoreCase(final String username);
 
-    Optional<User> findByUserIdAndIsDeletedFalseAndIsBlockedFalse(final UUID userId);
+    Optional<User> findByUserIdAndIsDeletedFalseAndIsBlockedFalse(final String userId);
 }

@@ -5,18 +5,17 @@ import io.voldsman.topicify.usersprofile.payload.UpdateBioRequest;
 import io.voldsman.topicify.usersprofile.payload.UpdateImageRequest;
 import io.voldsman.topicify.usersprofile.payload.UpdateLinksRequest;
 
-import java.util.UUID;
-
 public interface UserProfileService {
 
-    void createDefaultProfile(final UUID userId);
+    void createDefaultProfile(final String userId);
 
-    void updateProfileBio(final UUID userId, final UpdateBioRequest updateBioRequest);
+    void updateProfileBio(final String userId, final UpdateBioRequest updateBioRequest);
 
-    void updateProfileImage(final UUID userId, final UpdateImageRequest updateImageRequest);
+    void updateProfileImage(final String userId, final UpdateImageRequest updateImageRequest);
 
-    void updateProfileLinks(final UUID userId, final UpdateLinksRequest updateLinksRequest);
+    void updateProfileLinks(final String userId, final UpdateLinksRequest updateLinksRequest);
 
-    ProfileResponse getMyProfile(final UUID userId);
-    ProfileResponse previewUserProfile(final UUID tokenUserId, final UUID profileUserId);
+    ProfileResponse getMyProfile(final String userId);
+
+    ProfileResponse previewUserProfile(final String tokenUserId, final String profileUserId);
 }
